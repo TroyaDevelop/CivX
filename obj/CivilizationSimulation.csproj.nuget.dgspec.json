@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Artem\\Desktop\\Everything\\Разное\\Мои проги\\В процессе\\simulation\\CivilizationSimulation.csproj": {}
+    "C:\\Users\\Artem\\Desktop\\Everything\\Разное\\Мои проги\\В процессе\\CivX\\CivilizationSimulation.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Artem\\Desktop\\Everything\\Разное\\Мои проги\\В процессе\\simulation\\CivilizationSimulation.csproj": {
+    "C:\\Users\\Artem\\Desktop\\Everything\\Разное\\Мои проги\\В процессе\\CivX\\CivilizationSimulation.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Artem\\Desktop\\Everything\\Разное\\Мои проги\\В процессе\\simulation\\CivilizationSimulation.csproj",
+        "projectUniqueName": "C:\\Users\\Artem\\Desktop\\Everything\\Разное\\Мои проги\\В процессе\\CivX\\CivilizationSimulation.csproj",
         "projectName": "CivilizationSimulation",
-        "projectPath": "C:\\Users\\Artem\\Desktop\\Everything\\Разное\\Мои проги\\В процессе\\simulation\\CivilizationSimulation.csproj",
+        "projectPath": "C:\\Users\\Artem\\Desktop\\Everything\\Разное\\Мои проги\\В процессе\\CivX\\CivilizationSimulation.csproj",
         "packagesPath": "C:\\Users\\Artem\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Artem\\Desktop\\Everything\\Разное\\Мои проги\\В процессе\\simulation\\obj\\",
+        "outputPath": "C:\\Users\\Artem\\Desktop\\Everything\\Разное\\Мои проги\\В процессе\\CivX\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Artem\\AppData\\Roaming\\NuGet\\NuGet.Config"

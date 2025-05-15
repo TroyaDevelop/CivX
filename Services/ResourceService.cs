@@ -31,6 +31,9 @@ namespace CivilizationSimulation.Services
                 }
             }
 
+            // Базовый доход пищи
+            foodProduction += 2; // базовый доход
+
             // Производство с рабочих на карте
             if (_settlement.Map != null)
             {

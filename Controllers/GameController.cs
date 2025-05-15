@@ -24,14 +24,12 @@ namespace CivilizationSimulation.Controllers
 
         public void SimulateDay()
         {
-            // Потребление пищи населением (теперь выполняется в начале дня)
-            _populationService.ConsumeFoodAndUpdateStatus();
-            
-            // Удалить вызов _populationService.AssignWorkTasks();
-
-            // Генерация ресурсов и productionPoints
+            // Сначала генерация ресурсов и productionPoints
             int productionPoints = _resourceService.ProduceResources();
 
+            // Затем потребление пищи населением
+            _populationService.ConsumeFoodAndUpdateStatus();
+            
             // Строительство зданий с учётом productionPoints
             _buildingService.ProgressBuilding(productionPoints);
 

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CivilizationSimulation")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e8861eeeff3bad11c9bad8db7c064f923d2c4c1a")]
 [assembly: System.Reflection.AssemblyProductAttribute("CivilizationSimulation")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CivilizationSimulation")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

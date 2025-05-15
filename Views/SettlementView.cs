@@ -93,6 +93,8 @@ namespace CivilizationSimulation.Views
                     income[ResourceType.Food] += field.GetEffect("FoodProduction") * field.AssignedWorkers;
                 }
             }
+            // Базовый доход пищи
+            income[ResourceType.Food] += 2; // базовый доход
             // Доходы: рабочие на карте
             if (_settlement.Map != null)
             {
