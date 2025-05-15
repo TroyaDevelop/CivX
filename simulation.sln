@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CivilizationSimulation", "CivilizationSimulation.csproj", "{57F46229-27F6-3308-C8E3-5FA8DDD8668E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{57F46229-27F6-3308-C8E3-5FA8DDD8668E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57F46229-27F6-3308-C8E3-5FA8DDD8668E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57F46229-27F6-3308-C8E3-5FA8DDD8668E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57F46229-27F6-3308-C8E3-5FA8DDD8668E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {839550AA-CDE6-4D55-B880-180C9EC93293}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "K5ZQku/WfKk=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Artem\\Desktop\\Everything\\Разное\\Мои проги\\В процессе\\simulation\\CivilizationSimulation.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Artem\\.nuget\\packages\\spectre.console\\0.50.0\\spectre.console.0.50.0.nupkg.sha512",
+    "C:\\Users\\Artem\\.nuget\\packages\\system.memory\\4.6.3\\system.memory.4.6.3.nupkg.sha512"
+  ],
+  "logs": []
+}
