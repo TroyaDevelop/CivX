@@ -36,7 +36,7 @@ namespace CivilizationSimulation.Views
             AnsiConsole.Write(resourceTable);
 
             // Карта теперь основной интерфейс управления
-            var mapView = new MapView(_settlement);
+            var mapView = new MapView(_gameController, _settlement);
             mapView.Display();
         }
 

@@ -1,6 +1,7 @@
 using System;
 using Spectre.Console;
 using CivilizationSimulation.Models;
+using CivilizationSimulation.Controllers;
 
 namespace CivilizationSimulation.Views
 {
@@ -8,11 +9,13 @@ namespace CivilizationSimulation.Views
     {
         private readonly Settlement _settlement;
         private readonly int _mapSize;
+        private readonly GameController _gameController;
         private int _selectedX = 0;
         private int _selectedY = 0;
 
-        public MapView(Settlement settlement)
+        public MapView(GameController gameController, Settlement settlement)
         {
+            _gameController = gameController;
             _settlement = settlement;
             _mapSize = settlement.MapSize;
         }
@@ -21,6 +24,7 @@ namespace CivilizationSimulation.Views
         {
             bool exit = false;
             DateTime lastSimulationTime = DateTime.MinValue;
+            const int SimulationCooldownSeconds = 2;
             while (!exit)
             {
                 Clear();
@@ -29,7 +33,9 @@ namespace CivilizationSimulation.Views
                 grid.AddColumn(new GridColumn().Width(40));
                 grid.AddRow(RenderMapBlock(), DrawTileInfo());
                 AnsiConsole.Write(grid);
-                AnsiConsole.WriteLine("Стрелки — навигация, Enter — действия, Esc — выход");
+                AnsiConsole.WriteLine();
+                // Подсказки управления внизу
+                AnsiConsole.MarkupLine("[grey]Стрелки — навигация, Enter — действия, T — симулировать день, Esc — выход[/]");
                 var key = Console.ReadKey(true).Key;
                 switch (key)
                 {
@@ -39,6 +45,22 @@ namespace CivilizationSimulation.Views
                     case ConsoleKey.RightArrow: if (_selectedX < _mapSize - 1) _selectedX++; break;
                     case ConsoleKey.Enter:
                         ShowTileActionMenu();
+                        break;
+                    case ConsoleKey.T:
+                        TimeSpan timeSinceLastSimulation = DateTime.Now - lastSimulationTime;
+                        if (timeSinceLastSimulation.TotalSeconds < SimulationCooldownSeconds)
+                        {
+                            int waitSeconds = SimulationCooldownSeconds - (int)timeSinceLastSimulation.TotalSeconds;
+                            AnsiConsole.MarkupLine($"[yellow]Симуляция дня возможна через {waitSeconds} сек.[/]");
+                            AnsiConsole.MarkupLine("[grey]Нажмите любую клавишу для продолжения...[/]");
+                            Console.ReadKey(true);
+                            break;
+                        }
+                        lastSimulationTime = DateTime.Now;
+                        AnsiConsole.Status().Start("Симуляция дня...", ctx => {
+                            _gameController.SimulateDay();
+                            System.Threading.Thread.Sleep(1000);
+                        });
                         break;
                     case ConsoleKey.Escape: exit = true; break;
                 }

@@ -48,22 +48,47 @@ namespace CivilizationSimulation.Views
                 AnsiConsole.WriteLine("\n");
                 // Удалена старая панель с днем и населением
 
-                var menuOptions = new SelectionPrompt<string>()
-                    .Title("Выберите действие:")
-                    .PageSize(10)
-                    .AddChoices(new[] {
-                        "1. Симулировать день",
-                        "2. Исследовать технологии", 
-                        "3. Управление поселением",
-                        "4. Управление населением",
-                        "5. Подробная информация о поселении",
-                        "6. Выход"
-                    });
-                string choice;
-                choice = AnsiConsole.Prompt(menuOptions);
-                switch (choice)
+                var menuOptions = new List<string> {
+                    "1. Исследовать технологии",
+                    "2. Управление поселением",
+                    "3. Управление населением",
+                    "4. Подробная информация о поселении",
+                    "5. Выход"
+                };
+                for (int i = 0; i < menuOptions.Count; i++)
                 {
-                    case "1. Симулировать день":
+                    AnsiConsole.MarkupLine($"[white]{menuOptions[i]}[/]");
+                }
+                AnsiConsole.WriteLine();
+                // Подсказки управления внизу
+                AnsiConsole.MarkupLine("[grey]Навигация: 1-5 — выбрать действие, T — симулировать день, Esc — выход[/]");
+                AnsiConsole.MarkupLine("[grey]Подсказки управления всегда внизу экрана[/]");
+                // Ожидание ввода
+                var key = Console.ReadKey(true);
+                string? choice = null;
+                switch (key.Key)
+                {
+                    case ConsoleKey.D1:
+                    case ConsoleKey.NumPad1:
+                        choice = menuOptions[0];
+                        break;
+                    case ConsoleKey.D2:
+                    case ConsoleKey.NumPad2:
+                        choice = menuOptions[1];
+                        break;
+                    case ConsoleKey.D3:
+                    case ConsoleKey.NumPad3:
+                        choice = menuOptions[2];
+                        break;
+                    case ConsoleKey.D4:
+                    case ConsoleKey.NumPad4:
+                        choice = menuOptions[3];
+                        break;
+                    case ConsoleKey.D5:
+                    case ConsoleKey.NumPad5:
+                        choice = menuOptions[4];
+                        break;
+                    case ConsoleKey.T:
                         TimeSpan timeSinceLastSimulation = DateTime.Now - _lastSimulationTime;
                         if (timeSinceLastSimulation.TotalSeconds < SimulationCooldownSeconds)
                         {
@@ -74,29 +99,35 @@ namespace CivilizationSimulation.Views
                             break;
                         }
                         _lastSimulationTime = DateTime.Now;
-                        AnsiConsole.Status()
-                            .Start("Симуляция дня...", ctx => {
-                                _gameController.SimulateDay();
-                                System.Threading.Thread.Sleep(1000);
-                            });
+                        AnsiConsole.Status().Start("Симуляция дня...", ctx => {
+                            _gameController.SimulateDay();
+                            Thread.Sleep(1000);
+                        });
+                        continue;
+                    case ConsoleKey.Escape:
+                        Environment.Exit(0);
                         break;
-                    case "2. Исследовать технологии":
+                }
+                if (choice == null) continue;
+                switch (choice)
+                {
+                    case "1. Исследовать технологии":
                         var techView = new TechnologyView(_gameController, _settlement);
                         techView.Display();
                         break;
-                    case "3. Управление поселением":
+                    case "2. Управление поселением":
                         var buildingView = new BuildingView(_gameController, _settlement);
                         buildingView.Display();
                         break;
-                    case "4. Управление населением":
+                    case "3. Управление населением":
                         var populationView = new PopulationView(_gameController, _settlement);
                         populationView.Display();
                         break;
-                    case "5. Подробная информация о поселении":
+                    case "4. Подробная информация о поселении":
                         var settlementView = new SettlementView(_settlement);
                         settlementView.Display();
                         break;
-                    case "6. Выход":
+                    case "5. Выход":
                         Environment.Exit(0);
                         break;
                 }
